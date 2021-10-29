@@ -10,7 +10,49 @@
 
 <body>
   <script>
+    /**
+     *什么情况下使用默认绑定呢？独立函数调用。
+     *独立的函数调用我们可以理解成函数没有被绑定到某个对象上进行调用；
+     */
 
+    //案例一 普通函数调用
+    function foo() {
+      console.log(this); //window
+    }
+
+    foo();
+
+    // 案例二 函数调用链（一个函数又调用另外一个函数）
+    function test1() {
+      test2();
+      console.log(this); //window
+    }
+
+    function test2() {
+      test3()
+      console.log(this); //window
+    }
+
+    function test3() {
+      console.log(this); //window
+    }
+
+    test1();
+
+    // 案例三 将函数作为参数，传入到另一个函数中
+
+    function foo2(bar) {
+      bar()
+    }
+
+    var obj = {
+      name: 'zhangsan',
+      bar: function () {
+        console.log(this); //window
+      }
+    }
+
+    foo2(obj.bar);
   </script>
 </body>
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function foo() {
+      console.log(this); //obj1
+    }
+
+    var obj1 = {
+      name: 'obj1',
+      foo: foo
+    }
+
+    var obj2 = {
+      name: 'obj2',
+      obj1: obj1
+    }
+    //案例一
+    obj1.foo(); //obj1
+
+    //案例二
+    obj2.obj1.foo(); // obj1
+
+    //案例三 隐式丢失
+    var newBar = obj1.foo;
+    newBar(); //window
+  </script>
+</body>
+
+</html>

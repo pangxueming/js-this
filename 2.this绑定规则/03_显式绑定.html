@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 通过call、apply绑定this对象
+    // 显示绑定后，this就会明确指向对象
+    function foo() {
+      console.log(this);
+    }
+
+    foo.call(window);
+    foo.call({
+      name: 'zhangsan'
+    });
+    foo.call(123);
+
+    // bind函数
+    // 使用Function.prototype.bind
+    function foo2() {
+      console.log(this);
+    }
+    obj2 = {
+      name: 'lisi',
+    }
+    var bar = foo2.bind(obj2)
+    bar();
+
+    // 内置函数
+    // 1 setTimeOut()
+    setTimeout(function () {
+      console.log(this); //window
+    }, 1000)
+
+    //2 forEach(callback,this)
+    // forEach第二参数，可以改变this指向
+
+    var names = ['zhangsan', 'lisi', 'wangwu', 'zhaoliu']
+    names.forEach(function (item) {
+      console.log(this);
+    }, obj2);
+
+    // new 绑定
+
+    function Person(name) {
+      console.log(this);
+      this.name = name;
+    }
+
+    var p = new Person('wangwu')
+    console.log(p);
+
+    // 5.规则优先权
+    //    1.默认绑定优先级最低
+    //    2.显式绑定优先级高于隐式绑定
+    //    3. 
+  </script>
+</body>
+
+</html>

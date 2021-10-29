@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //new绑定 > 显示绑定（bind）> 隐式绑定 > 默认绑定
+
+    // 1.默认规则绑定优先级最低
+    // 2.显式绑定优先级高于隐式绑定
+
+    function foo() {
+      console.log(this);
+    }
+
+    var obj1 = {
+      name: 'obj1',
+      foo
+    }
+
+    var obj2 = {
+      name: 'obj2',
+      foo
+    }
+
+    obj1.foo();
+    obj2.foo();
+
+    obj1.foo.bind(obj2)(); //说明显式绑定比隐式绑定优先级高
+
+    // 3.new绑定优先级高于隐式绑定
+    function foo() {
+      console.log(this);
+    }
+
+    var obj = {
+      name: 'obj',
+      foo
+    }
+
+    new obj.foo();
+  </script>
+</body>
+
+</html>
