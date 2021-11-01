@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var obj = {
+      data: [],
+      getData() {
+        var _this = this;
+        setTimeout(function () {
+          var res = ['abc', 'cba', 'mba', 'nba']
+          _this.data.push(...res);
+          console.log(_this.data);
+        }, 1000)
+      }
+    }
+    obj.getData();
+  </script>
+</body>
+
+</html>

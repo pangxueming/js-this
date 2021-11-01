@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const obj1 = {
+      name: 'joy',
+      getName() {
+        console.log(this);
+        console.log(this.name);
+      }
+    }
+
+    const obj2 = {
+      name: 'sam'
+    }
+
+    obj1.getName();
+
+    // call和apply的不同就是传递参数的方式不同，
+    // call(this,[1,2]) 不管多少个都是用数组的形式把参数包裹起来
+    // apply(this,1,2)  一个个参数列出来传
+    obj1.getName.call(obj2);
+    obj1.getName.apply(obj2);
+
+    const fn = obj1.getName.bind(obj2);
+    fn();
+
+    /**
+     * call，apply和bind的区别
+     * call和apply都是即时调用，绑定既是调用，而bing会返回绑定后的函数，自行需要的时候再调用
+    */
+  </script>
+</body>
+
+</html>
